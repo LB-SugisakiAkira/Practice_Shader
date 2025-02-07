@@ -44,7 +44,7 @@ public class MoveCube : MonoBehaviour, IPointerClickHandler, IDragHandler
         switch (data.button)
         {
             case PointerEventData.InputButton.Left:
-                transform.Rotate(new(0, data.delta.x / 10, 0));
+                transform.Rotate(new(0, -data.delta.x / 10, 0));
                 break;
             case PointerEventData.InputButton.Middle:
                 // ↓これだと消える（おそらくZ座標がだめ)
