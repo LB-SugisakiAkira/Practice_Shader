@@ -13,14 +13,11 @@ public class AvatarMakeSceneManager : MonoBehaviour
     void Start()
     {
         colorChangeButton.OnClickAsObservable()
-    .ThrottleFirst(TimeSpan.FromSeconds(1))
-    .Subscribe(_ => { PressColorChange(); });
+        .ThrottleFirst(TimeSpan.FromSeconds(1))
+        .Subscribe(_ => { PressColorChange(); });
     }
     private void PressColorChange()
     {
-        Avatar.GetComponent<Renderer>().material.color = Color.red;
+        Avatar.GetComponent<Renderer>().material.color = new Color32(248, 168, 133, 1);
     }
-
-
-
 }
