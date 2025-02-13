@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["Behaviour"]
+  "cSpell.words": ["Behaviour"],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  }
 }
