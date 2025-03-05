@@ -24,6 +24,7 @@ public class AvatarMakeSceneManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject Avatar;
+    [SerializeField] private MeshRenderer AvatarMeshRenderer;
 
     [SerializeField] private Button colorChangeButton;
     [SerializeField] private ColorPickerPanel colorPickerPanel;
@@ -43,6 +44,7 @@ public class AvatarMakeSceneManager : MonoBehaviour
     public void OnAfterCloseColorSelectPanel(Color selectedColor)
     {
         Debug.Log("選択された色 (RGB): " + selectedColor.r + ", " + selectedColor.g + ", " + selectedColor.b);
-        Avatar.GetComponent<Renderer>().material.color = selectedColor;
+        // Avatar.GetComponent<Renderer>().material.color = selectedColor;
+        AvatarMeshRenderer.material.SetColor("_Color", selectedColor);
     }
 }

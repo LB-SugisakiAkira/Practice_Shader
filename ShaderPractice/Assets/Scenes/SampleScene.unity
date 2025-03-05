@@ -1267,6 +1267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Avatar: {fileID: 594902226}
+  AvatarMeshRenderer: {fileID: 594902228}
   colorChangeButton: {fileID: 531094941}
   colorPickerPanel: {fileID: 478245297}
 --- !u!4 &1250950132
