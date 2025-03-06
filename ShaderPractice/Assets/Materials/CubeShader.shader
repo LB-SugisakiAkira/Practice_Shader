@@ -51,7 +51,7 @@ Shader "Unlit/CubeShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = lerp(_Color1,_Color2,i.uv.x * i.uv.y);
+                fixed4 col = lerp(_Color1, _Color2, i.uv.x * 0.5 + i.uv.y * 0.5);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
