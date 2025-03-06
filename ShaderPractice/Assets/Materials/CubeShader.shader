@@ -3,7 +3,8 @@ Shader "Unlit/CubeShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color("CubeColor", Color) = (1,1,0,1)
+        _Color1("CubeColor1", Color) = (1,1,0,1)
+        _Color2("CubeColor2", Color) = (1,0,0,1)
     }
     SubShader
     {
@@ -35,7 +36,8 @@ Shader "Unlit/CubeShader"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color;
+            float4 _Color1;
+            float4 _Color2;
 
             v2f vert (appdata v)
             {
@@ -49,7 +51,7 @@ Shader "Unlit/CubeShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = _Color;
+                fixed4 col = lerp(_Color1,_Color2,i.uv.x * i.uv.y);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
