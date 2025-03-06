@@ -26,25 +26,30 @@ public class AvatarMakeSceneManager : MonoBehaviour
     [SerializeField] private GameObject Avatar;
     [SerializeField] private MeshRenderer AvatarMeshRenderer;
 
-    [SerializeField] private Button colorChangeButton;
+    [SerializeField] private Button colorChangeButton1;
+    [SerializeField] private Button colorChangeButton2;
     [SerializeField] private ColorPickerPanel colorPickerPanel;
 
     void Start()
     {
-        colorChangeButton.OnClickAsObservable()
+        colorChangeButton1.OnClickAsObservable()
         .ThrottleFirst(TimeSpan.FromSeconds(1))
-        .Subscribe(_ => { PressColorChange(); });
+        .Subscribe(_ => { PressColorChange(1); });
+        colorChangeButton2.OnClickAsObservable()
+        .ThrottleFirst(TimeSpan.FromSeconds(1))
+        .Subscribe(_ => { PressColorChange(2); });
     }
-    private void PressColorChange()
+    private void PressColorChange(int colorIndex)
     {
         // Avatar.GetComponent<Renderer>().material.color = new Color32(248, 168, 133, 1);
         colorPickerPanel.gameObject.SetActive(true);
+        colorPickerPanel.SetColorIndex(colorIndex);
     }
 
-    public void OnAfterCloseColorSelectPanel(Color selectedColor)
+    public void OnAfterCloseColorSelectPanel(Color selectedColor, int colorIndex)
     {
-        Debug.Log("選択された色 (RGB): " + selectedColor.r + ", " + selectedColor.g + ", " + selectedColor.b);
         // Avatar.GetComponent<Renderer>().material.color = selectedColor;
-        AvatarMeshRenderer.material.SetColor("_Color", selectedColor);
+        string propertyName = colorIndex == 1 ? "_Color1" : "_Color2";
+        AvatarMeshRenderer.material.SetColor(propertyName, selectedColor);
     }
 }

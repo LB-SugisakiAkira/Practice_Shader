@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["Behaviour", "CGPROGRAM", "ENDCG", "lerp"],
+  "cSpell.words": [
+    "Behaviour",
+    "CGPROGRAM",
+    "Dont",
+    "ENDCG",
+    "lerp"
+  ],
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   }

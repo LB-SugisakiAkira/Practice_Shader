@@ -23,6 +23,12 @@ public class ColorPickerPanel : MonoBehaviour, IPointerClickHandler
         selectedColorMarker.gameObject.SetActive(false);
     }
 
+    private int colorIndex;
+    public void SetColorIndex(int colorIndex)
+    {
+        this.colorIndex = colorIndex;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         // クリックした位置の色を取得
@@ -56,6 +62,6 @@ public class ColorPickerPanel : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("選択されたRGB: " + selectedColor.r + ", " + selectedColor.g + ", " + selectedColor.b);
         gameObject.SetActive(false); // パネルを閉じる
-        AvatarMakeSceneManager.instance.OnAfterCloseColorSelectPanel(selectedColor);
+        AvatarMakeSceneManager.instance.OnAfterCloseColorSelectPanel(selectedColor, this.colorIndex);
     }
 }
